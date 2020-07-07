@@ -6,15 +6,15 @@
 //  Copyright © 2020 gfloresv. All rights reserved.
 //
 
-#import "ViewController.h"
+#import "LoginViewController.h"
 #import <Parse/Parse.h>
-@interface ViewController ()
+@interface LoginViewController ()
 @property (weak, nonatomic) IBOutlet UITextField *usernameField;
 @property (weak, nonatomic) IBOutlet UITextField *passwordField;
 
 @end
 
-@implementation ViewController
+@implementation LoginViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];

@@ -12,7 +12,7 @@
 		9C78FA27B1CF05430969E14A /* Pods_Instagram_InstagramUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E00461236C52AF3A90B920B6 /* Pods_Instagram_InstagramUITests.framework */; };
 		B89D2AAF24B3DBCF002B65EE /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B89D2AAE24B3DBCF002B65EE /* AppDelegate.m */; };
 		B89D2AB224B3DBCF002B65EE /* SceneDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B89D2AB124B3DBCF002B65EE /* SceneDelegate.m */; };
-		B89D2AB524B3DBCF002B65EE /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B89D2AB424B3DBCF002B65EE /* ViewController.m */; };
+		B89D2AB524B3DBCF002B65EE /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B89D2AB424B3DBCF002B65EE /* LoginViewController.m */; };
 		B89D2AB824B3DBCF002B65EE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B89D2AB624B3DBCF002B65EE /* Main.storyboard */; };
 		B89D2ABA24B3DBCF002B65EE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B89D2AB924B3DBCF002B65EE /* Assets.xcassets */; };
 		B89D2ABD24B3DBCF002B65EE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B89D2ABB24B3DBCF002B65EE /* LaunchScreen.storyboard */; };
@@ -52,8 +52,8 @@
 		B89D2AAE24B3DBCF002B65EE /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		B89D2AB024B3DBCF002B65EE /* SceneDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SceneDelegate.h; sourceTree = "<group>"; };
 		B89D2AB124B3DBCF002B65EE /* SceneDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SceneDelegate.m; sourceTree = "<group>"; };
-		B89D2AB324B3DBCF002B65EE /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		B89D2AB424B3DBCF002B65EE /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		B89D2AB324B3DBCF002B65EE /* LoginViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
+		B89D2AB424B3DBCF002B65EE /* LoginViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
 		B89D2AB724B3DBCF002B65EE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		B89D2AB924B3DBCF002B65EE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B89D2ABC24B3DBCF002B65EE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -128,8 +128,8 @@
 				B89D2AAE24B3DBCF002B65EE /* AppDelegate.m */,
 				B89D2AB024B3DBCF002B65EE /* SceneDelegate.h */,
 				B89D2AB124B3DBCF002B65EE /* SceneDelegate.m */,
-				B89D2AB324B3DBCF002B65EE /* ViewController.h */,
-				B89D2AB424B3DBCF002B65EE /* ViewController.m */,
+				B89D2AB324B3DBCF002B65EE /* LoginViewController.h */,
+				B89D2AB424B3DBCF002B65EE /* LoginViewController.m */,
 				B89D2AB624B3DBCF002B65EE /* Main.storyboard */,
 				B89D2AE224B44E38002B65EE /* homeViewController.h */,
 				B89D2AE324B44E38002B65EE /* homeViewController.m */,
@@ -420,7 +420,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B89D2AB524B3DBCF002B65EE /* ViewController.m in Sources */,
+				B89D2AB524B3DBCF002B65EE /* LoginViewController.m in Sources */,
 				B89D2AAF24B3DBCF002B65EE /* AppDelegate.m in Sources */,
 				B89D2AC024B3DBCF002B65EE /* main.m in Sources */,
 				B89D2AE424B44E38002B65EE /* homeViewController.m in Sources */,

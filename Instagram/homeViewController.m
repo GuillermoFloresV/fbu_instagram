@@ -8,6 +8,8 @@
 
 #import "homeViewController.h"
 #import <Parse/Parse.h>
+#import "SceneDelegate.h"
+#import "LoginViewController.h"
 @interface homeViewController ()
 @property (weak, nonatomic) IBOutlet UILabel *usernameCheckLabel;
 
@@ -17,17 +19,22 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    NSString *curr_user = PFUser.currentUser.username;
-    self.usernameCheckLabel.text = curr_user;
+    NSString *currUser = PFUser.currentUser.username;
+    self.usernameCheckLabel.text = [@"Welcome, " stringByAppendingFormat:@"%@", currUser];
     // Do any additional setup after loading the view.
     
 }
 - (IBAction)logoutAction:(id)sender {
     NSLog(@"Attempting to logout user: %@", PFUser.currentUser.username);
     NSString *userLoggedOut = PFUser.currentUser.username;
+    
+    SceneDelegate *sceneDelegate = (SceneDelegate *)self.view.window.windowScene.delegate;
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    LoginViewController *LoginViewController = [storyboard instantiateViewControllerWithIdentifier:@"LoginViewController"];
+    sceneDelegate.window.rootViewController = LoginViewController;
+    
     [PFUser logOutInBackgroundWithBlock:^(NSError * _Nullable error) {
         // PFUser.current() will now be nil
-    [self performSegueWithIdentifier:@"goToLoginSegue" sender:self];
             NSLog(@"User: %@ logged out successfully",userLoggedOut);
     }];
 }
