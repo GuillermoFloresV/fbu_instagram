@@ -15,19 +15,31 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Icon-60" translatesAutoresizingMaskIntoConstraints="NO" id="Xqy-wX-nhm">
-                                <rect key="frame" x="91" y="382" width="236" height="130"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Icon-60" translatesAutoresizingMaskIntoConstraints="NO" id="Xqy-wX-nhm">
+                                <rect key="frame" x="95" y="328" width="230" height="240"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="240" id="I3s-Rn-Bhy"/>
+                                    <constraint firstAttribute="width" constant="230" id="h0c-62-dpH"/>
+                                </constraints>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Instagram" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SCs-Kg-5iy">
-                                <rect key="frame" x="172" y="344" width="70" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" name="SavoyeLetPlain" family="Savoye LET" pointSize="25"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Instagram" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SCs-Kg-5iy">
+                                <rect key="frame" x="20" y="576" width="374" height="48"/>
+                                <fontDescription key="fontDescription" name="SavoyeLetPlain" family="Savoye LET" pointSize="40"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="SCs-Kg-5iy" secondAttribute="trailing" constant="20" id="1sQ-mO-esY"/>
+                            <constraint firstItem="SCs-Kg-5iy" firstAttribute="top" secondItem="Xqy-wX-nhm" secondAttribute="bottom" constant="8" id="2Zd-my-Ckq"/>
+                            <constraint firstItem="SCs-Kg-5iy" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="8e1-Bm-HM3"/>
+                            <constraint firstItem="SCs-Kg-5iy" firstAttribute="top" secondItem="Xqy-wX-nhm" secondAttribute="bottom" constant="8" id="9iP-KN-Xdx"/>
+                            <constraint firstItem="Xqy-wX-nhm" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="95" id="HCU-ff-EH4"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="SCs-Kg-5iy" secondAttribute="bottom" constant="238" id="Hwx-pY-1o3"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Xqy-wX-nhm" secondAttribute="trailing" constant="89" id="XdD-hJ-VdY"/>
+                            <constraint firstItem="SCs-Kg-5iy" firstAttribute="top" secondItem="Xqy-wX-nhm" secondAttribute="bottom" constant="8" id="djg-7j-1Vo"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                 </viewController>
