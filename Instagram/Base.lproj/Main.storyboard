@@ -68,6 +68,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
+                    <navigationItem key="navigationItem" id="GpI-dA-sUX"/>
                     <connections>
                         <outlet property="passwordField" destination="ij2-f3-Y4a" id="mby-Jy-HwW"/>
                         <outlet property="usernameField" destination="hGa-e3-uqj" id="Ksc-Vk-lsy"/>
@@ -78,10 +79,10 @@
             </objects>
             <point key="canvasLocation" x="137.68115942028987" y="137.94642857142856"/>
         </scene>
-        <!--View Controller-->
+        <!--Home-->
         <scene sceneID="Gyn-0e-zh0">
             <objects>
-                <viewController id="uiO-Sf-ygd" sceneMemberID="viewController">
+                <viewController id="uiO-Sf-ygd" customClass="homeViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="wED-7K-fYB">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -97,11 +98,21 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="5lV-61-eiA"/>
                     </view>
-                    <navigationItem key="navigationItem" id="JWQ-7Q-ZSm"/>
+                    <navigationItem key="navigationItem" title="Home" id="JWQ-7Q-ZSm">
+                        <barButtonItem key="leftBarButtonItem" title="Logout" id="MsJ-wq-6PG">
+                            <connections>
+                                <action selector="logoutAction:" destination="uiO-Sf-ygd" id="SSz-fu-GR3"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="usernameCheckLabel" destination="Wvp-Pq-Fl6" id="X0q-S2-uvQ"/>
+                        <segue destination="BYZ-38-t0r" kind="presentation" identifier="goToLoginSegue" modalPresentationStyle="fullScreen" id="LZZ-bS-UwJ"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gL1-jQ-taq" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1813.5999999999999" y="140.77961019490255"/>
+            <point key="canvasLocation" x="1817" y="-628"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="bYx-V2-zub">
