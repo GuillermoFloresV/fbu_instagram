@@ -82,22 +82,24 @@
         <!--Home-->
         <scene sceneID="Gyn-0e-zh0">
             <objects>
-                <viewController id="uiO-Sf-ygd" customClass="homeViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="homeViewController" id="uiO-Sf-ygd" customClass="homeViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="wED-7K-fYB">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="you made it :)))))))))))))))))" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wvp-Pq-Fl6">
-                                <rect key="frame" x="86" y="79" width="202" height="21"/>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tXU-SN-hk5">
+                                <rect key="frame" x="140" y="369" width="95" height="67"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                                <state key="normal" image="insta_camera_btn"/>
+                                <connections>
+                                    <action selector="postImageAction:" destination="uiO-Sf-ygd" eventType="touchUpInside" id="RfD-h9-Der"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="5lV-61-eiA"/>
                     </view>
+                    <tabBarItem key="tabBarItem" title="Feed" image="feed_tab" id="R8q-1h-ZIK"/>
                     <navigationItem key="navigationItem" title="Home" id="JWQ-7Q-ZSm">
                         <barButtonItem key="leftBarButtonItem" title="Logout" id="MsJ-wq-6PG">
                             <connections>
@@ -106,18 +108,17 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="usernameCheckLabel" destination="Wvp-Pq-Fl6" id="X0q-S2-uvQ"/>
                         <segue destination="BYZ-38-t0r" kind="presentation" identifier="goToLoginSegue" modalPresentationStyle="fullScreen" id="LZZ-bS-UwJ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gL1-jQ-taq" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1817" y="-628"/>
+            <point key="canvasLocation" x="2150" y="-650"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="bYx-V2-zub">
             <objects>
-                <navigationController storyboardIdentifier="homeViewController" automaticallyAdjustsScrollViewInsets="NO" id="lrE-pU-cjY" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="lrE-pU-cjY" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="7KM-xx-uDS"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Twa-yO-ExD">
@@ -126,7 +127,7 @@
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="uiO-Sf-ygd" kind="relationship" relationship="rootViewController" id="Cry-Da-UAO"/>
+                        <segue destination="uiO-Sf-ygd" kind="presentation" identifier="firstSegue" modalPresentationStyle="fullScreen" id="3K7-9D-Rgv"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rqa-L5-na9" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -134,4 +135,8 @@
             <point key="canvasLocation" x="874.39999999999998" y="140.77961019490255"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="feed_tab" width="25" height="25"/>
+        <image name="insta_camera_btn" width="25" height="25"/>
+    </resources>
 </document>
