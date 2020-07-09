@@ -11,18 +11,40 @@
 #import "SceneDelegate.h"
 #import "LoginViewController.h"
 #import "Post.h"
-@interface homeViewController ()
+#import "PostCell.h"
+@interface homeViewController () <UITableViewDataSource, UITableViewDelegate>
 @property (weak, nonatomic) IBOutlet UILabel *usernameCheckLabel;
-
+@property (weak, nonatomic) IBOutlet UITableView *postsTableView;
+@property (nonatomic, strong) NSMutableArray *postsArray;
 @end
 
 @implementation homeViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    NSString *currUser = PFUser.currentUser.username;
-    self.usernameCheckLabel.text = [@"Welcome, " stringByAppendingFormat:@"%@", currUser];
+    
+    self.postsTableView.delegate = self;
+    self.postsTableView.dataSource = self;
+    self.postsTableView.rowHeight = 500;
+    
     // Do any additional setup after loading the view.
+    // construct PFQuery
+    PFQuery *postQuery = [Post query];
+    [postQuery orderByDescending:@"createdAt"];
+    [postQuery includeKey:@"author"];
+    postQuery.limit = 20;
+
+    // fetch data asynchronously
+    [postQuery findObjectsInBackgroundWithBlock:^(NSArray<Post *> * _Nullable posts, NSError * _Nullable error) {
+        if (posts) {
+            // do something with the data fetched
+            self.postsArray = (NSMutableArray *) posts;
+            [self.postsTableView reloadData];
+        }
+        else {
+            NSLog(@"Error loading timeline: %@", error.localizedDescription);
+        }
+    }];
     
 }
 - (IBAction)logoutAction:(id)sender {
@@ -39,45 +61,7 @@
             NSLog(@"User: %@ logged out successfully",userLoggedOut);
     }];
 }
-- (IBAction)postImageAction:(id)sender {
-    UIImagePickerController *imagePickerVC = [UIImagePickerController new];
-    imagePickerVC.delegate = self;
-    imagePickerVC.allowsEditing = YES;
-    imagePickerVC.sourceType = UIImagePickerControllerSourceTypeCamera;
 
-    [self presentViewController:imagePickerVC animated:YES completion:nil];
-    
-    if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]) {
-        imagePickerVC.sourceType = UIImagePickerControllerSourceTypeCamera;
-    }
-    else {
-        NSLog(@"Camera 🚫 available so we will use photo library instead");
-        imagePickerVC.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
-        
-    }
-    
-    
-}
-- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary<NSString *,id> *)info {
-    
-    // Get the image captured by the UIImagePickerController
-    UIImage *originalImage = info[UIImagePickerControllerOriginalImage];
-    UIImage *editedImage = info[UIImagePickerControllerEditedImage];
-
-    // Do something with the images (based on your use case)
-    [Post postUserImage:editedImage withCaption:@"Hello WOrld!" withCompletion:^(BOOL succeeded, NSError * _Nullable error) {
-        if(succeeded)
-        {
-            NSLog(@"image successfully posted!");
-        }
-        else
-        {
-            NSLog(@"Error: %@", error.localizedDescription);
-        }
-    }];
-    // Dismiss UIImagePickerController to go back to your original view controller
-    [self dismissViewControllerAnimated:YES completion:nil];
-}
 /*
 #pragma mark - Navigation
 
@@ -88,13 +72,24 @@
 }
 */
 
-//- (nonnull UITableViewCell *)tableView:(nonnull UITableView *)tableView cellForRowAtIndexPath:(nonnull NSIndexPath *)indexPath {
-//
-//}
-//
-//- (NSInteger)tableView:(nonnull UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-//
-//}
+- (nonnull UITableViewCell *)tableView:(nonnull UITableView *)tableView cellForRowAtIndexPath:(nonnull NSIndexPath *)indexPath {
+    PostCell *postCell = [tableView dequeueReusableCellWithIdentifier:@"PostCell" ];
+    Post *post = self.postsArray[indexPath.row];
+    NSLog(@"%@",post.caption);
+    postCell.post = post;
+    
+    postCell.userLabel.text = post.author.username;
+    postCell.captionLabel.text = post.caption;
+    
+    //postCell.numLikesLabel.text = post.likeCount;
+    //postCell.postPictureView = post.image;
+    
+    return postCell;
+}
+
+- (NSInteger)tableView:(nonnull UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    return self.postsArray.count;
+}
 
 
 @end
