@@ -16,6 +16,8 @@
 @property (weak, nonatomic) IBOutlet UILabel *usernameCheckLabel;
 @property (weak, nonatomic) IBOutlet UITableView *postsTableView;
 @property (nonatomic, strong) NSMutableArray *postsArray;
+
+@property (nonatomic, strong) UIRefreshControl *refreshControl;
 @end
 
 @implementation homeViewController
@@ -26,6 +28,9 @@
     self.postsTableView.delegate = self;
     self.postsTableView.dataSource = self;
     self.postsTableView.rowHeight = 500;
+    self.refreshControl = [[UIRefreshControl alloc] init];
+    [self.refreshControl addTarget:self action:@selector(beginRefresh:) forControlEvents:UIControlEventValueChanged];
+    [self.postsTableView insertSubview:self.refreshControl atIndex:0];
     
     // Do any additional setup after loading the view.
     // construct PFQuery
@@ -48,6 +53,26 @@
     }];
     
 }
+- (void)beginRefresh:(UIRefreshControl *)refreshFeed {
+    PFQuery *postQuery = [Post query];
+    [postQuery orderByDescending:@"createdAt"];
+    [postQuery includeKey:@"author"];
+    [postQuery includeKey:@"caption"];
+    postQuery.limit = 20;
+    [postQuery findObjectsInBackgroundWithBlock:^(NSArray<Post *> * _Nullable posts, NSError * _Nullable error) {
+        if (posts) {
+            // do something with the data fetched
+            self.postsArray = (NSMutableArray *) posts;
+            [self.postsTableView reloadData];
+        }
+        else {
+            NSLog(@"Error loading timeline: %@", error.localizedDescription);
+        }
+        [self.postsTableView reloadData];
+        [self.refreshControl endRefreshing];
+    }];
+}
+
 - (IBAction)logoutAction:(id)sender {
     NSLog(@"Attempting to logout user: %@", PFUser.currentUser.username);
     NSString *userLoggedOut = PFUser.currentUser.username;
