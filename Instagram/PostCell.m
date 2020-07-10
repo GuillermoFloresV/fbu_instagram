@@ -7,7 +7,8 @@
 //
 
 #import "PostCell.h"
-
+#import <Parse/Parse.h>
+#import "Post.h"
 @implementation PostCell
 
 - (void)awakeFromNib {
@@ -20,5 +21,9 @@
 
     // Configure the view for the selected state
 }
-
+- (void)setPost:(Post *)post {
+    _post = post;
+    self.photoImageView.file = post[@"image"];
+    [self.photoImageView loadInBackground];
+}
 @end

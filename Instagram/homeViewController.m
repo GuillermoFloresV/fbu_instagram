@@ -32,6 +32,7 @@
     PFQuery *postQuery = [Post query];
     [postQuery orderByDescending:@"createdAt"];
     [postQuery includeKey:@"author"];
+    [postQuery includeKey:@"caption"];
     postQuery.limit = 20;
 
     // fetch data asynchronously
@@ -81,8 +82,10 @@
     postCell.userLabel.text = post.author.username;
     postCell.captionLabel.text = post.caption;
     
+    
     //postCell.numLikesLabel.text = post.likeCount;
-    //postCell.postPictureView = post.image;
+    postCell.photoImageView.file = post.image;
+    [postCell.photoImageView loadInBackground];
     
     return postCell;
 }
