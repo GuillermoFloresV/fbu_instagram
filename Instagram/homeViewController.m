@@ -107,6 +107,8 @@
     postCell.userLabel.text = post.author.username;
     postCell.captionLabel.text = post.caption;
     
+    NSNumber *numLikes = post.likeCount;
+    postCell.numLikesLabel.text = [numLikes stringValue];
     
     //postCell.numLikesLabel.text = post.likeCount;
     postCell.photoImageView.file = post.image;

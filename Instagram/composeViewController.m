@@ -12,6 +12,8 @@
 #import "SceneDelegate.h"
 @interface composeViewController ()
 @property (weak, nonatomic) IBOutlet UITextView *captionTextView;
+@property(strong, nonatomic) UIImage *editedImage;
+@property (weak, nonatomic) IBOutlet UIImageView *previewImageView;
 
 @end
 
@@ -20,7 +22,9 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    self.captionTextView.text = @"Type your caption here";
+}
+- (IBAction)onTapDismiss:(id)sender {
+    [self.view endEditing:YES];
 }
 
 /*
@@ -32,6 +36,28 @@
     // Pass the selected object to the new view controller.
 }
 */
+- (IBAction)postAction:(id)sender {
+    NSString *captionText = self.captionTextView.text;
+    
+    if(captionText.length  ==0)
+    {
+        NSLog(@"Cannot have an empty caption. Posting failed");
+    }
+    else{
+        [Post postUserImage:_editedImage withCaption:captionText withCompletion:^(BOOL succeeded, NSError * _Nullable error) {
+            if(succeeded)
+            {
+                NSLog(@"image successfully posted!");
+            }
+            else
+            {
+                NSLog(@"Error: %@", error.localizedDescription);
+            }
+        }];
+        // Dismiss UIImagePickerController to go back to your original view controller
+        
+    }
+}
 
 - (IBAction)takePictureAction:(id)sender {
         UIImagePickerController *imagePickerVC = [UIImagePickerController new];
@@ -70,25 +96,17 @@
     }
     
 }
+
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary<NSString *,id> *)info {
         
         // Get the image captured by the UIImagePickerController
         UIImage *originalImage = info[UIImagePickerControllerOriginalImage];
-        UIImage *editedImage = info[UIImagePickerControllerEditedImage];
+        self.editedImage = info[UIImagePickerControllerEditedImage];
         CGSize c=CGSizeMake(150, 150);
-        [self resizeImage:editedImage withSize:(c)];
+        [self resizeImage:self.editedImage withSize:(c)];
+        self.previewImageView.image = [self resizeImage:_editedImage withSize:CGSizeMake(300,300)];
+
         // Do something with the images (based on your use case)
-        [Post postUserImage:editedImage withCaption:@"Hello WOrld!" withCompletion:^(BOOL succeeded, NSError * _Nullable error) {
-            if(succeeded)
-            {
-                NSLog(@"image successfully posted!");
-            }
-            else
-            {
-                NSLog(@"Error: %@", error.localizedDescription);
-            }
-        }];
-        // Dismiss UIImagePickerController to go back to your original view controller
         [self dismissViewControllerAnimated:YES completion:nil];
     }
     - (UIImage *)resizeImage:(UIImage *)image withSize:(CGSize)size {
@@ -102,6 +120,7 @@
         UIImage *newImage = UIGraphicsGetImageFromCurrentImageContext();
         UIGraphicsEndImageContext();
         
+
         return newImage;
     }
 

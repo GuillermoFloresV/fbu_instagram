@@ -225,33 +225,68 @@
                                     <action selector="choosePictureAction:" destination="Kzx-U1-e7I" eventType="touchUpInside" id="p7R-rd-cjS"/>
                                 </connections>
                             </button>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" text="Write your text here" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="Phk-bS-OaH">
-                                <rect key="frame" x="16" y="179" width="343" height="76"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Write your text here" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="Phk-bS-OaH">
+                                <rect key="frame" x="16" y="203" width="343" height="116"/>
                                 <color key="backgroundColor" systemColor="systemGray5Color" red="0.8980392157" green="0.8980392157" blue="0.91764705879999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <accessibility key="accessibilityConfiguration" hint="Type your caption here"/>
                                 <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="p6J-0S-7NC">
+                                <rect key="frame" x="164" y="402" width="46" height="46"/>
+                                <state key="normal" title="Button"/>
+                                <connections>
+                                    <action selector="postAction:" destination="Kzx-U1-e7I" eventType="touchUpInside" id="1RY-mW-ic4"/>
+                                </connections>
+                            </button>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="wgj-Mx-diz">
+                                <rect key="frame" x="124" y="60" width="127" height="127"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="127" id="7hB-bE-At6"/>
+                                    <constraint firstAttribute="width" constant="127" id="WSf-Km-OUr"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <gestureRecognizers/>
                         <constraints>
+                            <constraint firstItem="Phk-bS-OaH" firstAttribute="top" secondItem="wgj-Mx-diz" secondAttribute="bottom" constant="16" id="2S9-jL-9Mc"/>
+                            <constraint firstItem="p6J-0S-7NC" firstAttribute="top" secondItem="9oE-TI-ZYT" secondAttribute="bottom" constant="32" id="Cug-Il-moy"/>
                             <constraint firstItem="mSD-uu-72O" firstAttribute="trailing" secondItem="tXU-SN-hk5" secondAttribute="trailing" constant="140" id="DXl-KK-vKZ"/>
+                            <constraint firstItem="mSD-uu-72O" firstAttribute="trailing" secondItem="p6J-0S-7NC" secondAttribute="trailing" constant="165" id="KDI-Y7-ijn"/>
+                            <constraint firstItem="mSD-uu-72O" firstAttribute="trailing" secondItem="wgj-Mx-diz" secondAttribute="trailing" constant="124" id="Mbz-M7-pLc"/>
                             <constraint firstItem="mSD-uu-72O" firstAttribute="bottom" secondItem="9oE-TI-ZYT" secondAttribute="bottom" constant="248" id="Ov2-iG-o6V"/>
                             <constraint firstItem="mSD-uu-72O" firstAttribute="bottom" secondItem="tXU-SN-hk5" secondAttribute="bottom" constant="251" id="QK1-VS-FiL"/>
+                            <constraint firstItem="wgj-Mx-diz" firstAttribute="leading" secondItem="mSD-uu-72O" secondAttribute="leading" constant="124" id="XIg-zC-Phs"/>
+                            <constraint firstItem="9oE-TI-ZYT" firstAttribute="top" secondItem="Phk-bS-OaH" secondAttribute="bottom" constant="16" id="XMH-Cy-B99"/>
                             <constraint firstItem="tXU-SN-hk5" firstAttribute="leading" secondItem="9oE-TI-ZYT" secondAttribute="trailing" constant="35" id="c3l-E8-tIy"/>
                             <constraint firstItem="9oE-TI-ZYT" firstAttribute="leading" secondItem="mSD-uu-72O" secondAttribute="leading" constant="140" id="do1-ND-2Ot"/>
+                            <constraint firstItem="mSD-uu-72O" firstAttribute="bottom" secondItem="p6J-0S-7NC" secondAttribute="bottom" constant="170" id="eEn-H1-Kg2"/>
+                            <constraint firstItem="Phk-bS-OaH" firstAttribute="leading" secondItem="mSD-uu-72O" secondAttribute="leading" constant="16" id="g2r-je-XsV"/>
                             <constraint firstItem="tXU-SN-hk5" firstAttribute="leading" secondItem="9oE-TI-ZYT" secondAttribute="trailing" constant="35" id="mPh-jr-wzX"/>
+                            <constraint firstItem="wgj-Mx-diz" firstAttribute="top" secondItem="mSD-uu-72O" secondAttribute="top" constant="16" id="oBl-qf-32F"/>
+                            <constraint firstItem="mSD-uu-72O" firstAttribute="trailing" secondItem="Phk-bS-OaH" secondAttribute="trailing" constant="16" id="rp4-GW-b8Q"/>
+                            <constraint firstItem="p6J-0S-7NC" firstAttribute="leading" secondItem="mSD-uu-72O" secondAttribute="leading" constant="164" id="w6b-OC-FoC"/>
+                            <constraint firstItem="Phk-bS-OaH" firstAttribute="top" secondItem="wgj-Mx-diz" secondAttribute="bottom" constant="16" id="wt5-fw-XIO"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="mSD-uu-72O"/>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="qlN-21-Rp4" appends="YES" id="wM1-t1-h40"/>
+                        </connections>
                     </view>
                     <navigationItem key="navigationItem" id="oFw-P1-Asw"/>
                     <connections>
                         <outlet property="captionTextView" destination="Phk-bS-OaH" id="pQ9-Rq-mkN"/>
+                        <outlet property="previewImageView" destination="wgj-Mx-diz" id="oj1-lC-FPK"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Afv-tP-Vz9" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="qlN-21-Rp4">
+                    <connections>
+                        <action selector="onTapDismiss:" destination="Kzx-U1-e7I" id="zcf-pf-ifR"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="1845.5999999999999" y="839.73013493253382"/>
         </scene>
