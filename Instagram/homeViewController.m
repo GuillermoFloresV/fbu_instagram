@@ -12,6 +12,7 @@
 #import "LoginViewController.h"
 #import "Post.h"
 #import "PostCell.h"
+#import "DetailsViewController.h"
 @interface homeViewController () <UITableViewDataSource, UITableViewDelegate>
 @property (weak, nonatomic) IBOutlet UILabel *usernameCheckLabel;
 @property (weak, nonatomic) IBOutlet UITableView *postsTableView;
@@ -88,15 +89,23 @@
     }];
 }
 
-/*
+
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
-}
-*/
+    NSLog(@"Tapping on a post.");
+    UITableViewCell *tappedCell = sender;
+    NSIndexPath *indexPath = [self.postsTableView indexPathForCell:tappedCell];
+    Post *post = self.postsArray[indexPath.row];
+    DetailsViewController *detailController = [segue destinationViewController];
+    detailController.post = post;
+
+    }
+
+
 
 - (nonnull UITableViewCell *)tableView:(nonnull UITableView *)tableView cellForRowAtIndexPath:(nonnull NSIndexPath *)indexPath {
     PostCell *postCell = [tableView dequeueReusableCellWithIdentifier:@"PostCell" ];

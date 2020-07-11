@@ -7,11 +7,20 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "Post.h"
+@import Parse;
+@protocol DetailsViewController
 NS_ASSUME_NONNULL_BEGIN
 
+@end
 @interface DetailsViewController : UIViewController
+@property (nonatomic, weak) id<DetailsViewController> delegate;
+@property (weak, nonatomic) IBOutlet PFImageView *imageView;
+@property (weak, nonatomic) IBOutlet UILabel *userLabel;
+@property (weak, nonatomic) IBOutlet UILabel *captionLabel;
+@property (weak, nonatomic) IBOutlet UILabel *numLikesLabel;
 
+@property (nonatomic, strong)Post *post;
 @end
 
 NS_ASSUME_NONNULL_END

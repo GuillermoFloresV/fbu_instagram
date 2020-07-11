@@ -160,7 +160,7 @@
                                             <outlet property="numLikesLabel" destination="UdM-3v-dAp" id="8wb-Lo-P4b"/>
                                             <outlet property="photoImageView" destination="Vel-ab-5xn" id="PWW-z7-p8A"/>
                                             <outlet property="userLabel" destination="yjS-YX-3F5" id="Ieu-UI-6k0"/>
-                                            <segue destination="tUe-0s-x7N" kind="show" id="7ey-n7-Uj9"/>
+                                            <segue destination="tUe-0s-x7N" kind="show" identifier="goToDetailsSegue" id="7ey-n7-Uj9"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -236,7 +236,7 @@
                             </textView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="p6J-0S-7NC">
                                 <rect key="frame" x="164" y="402" width="46" height="46"/>
-                                <state key="normal" title="Button"/>
+                                <state key="normal" title="Post!"/>
                                 <connections>
                                     <action selector="postAction:" destination="Kzx-U1-e7I" eventType="touchUpInside" id="1RY-mW-ic4"/>
                                 </connections>
@@ -315,7 +315,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="vc5-k3-8Jv">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="vc5-k3-8Jv" customClass="PFImageView">
                                 <rect key="frame" x="16" y="60" width="343" height="216.5"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="343" id="xaB-Un-yIn"/>
@@ -375,10 +375,16 @@
                         <viewLayoutGuide key="safeArea" id="Lo1-nL-1FV"/>
                     </view>
                     <navigationItem key="navigationItem" id="7Sx-vE-dZt"/>
+                    <connections>
+                        <outlet property="captionLabel" destination="0Qb-i5-2ms" id="hCR-3g-aoB"/>
+                        <outlet property="imageView" destination="vc5-k3-8Jv" id="gxo-Sf-gve"/>
+                        <outlet property="numLikesLabel" destination="zqH-k7-H6U" id="aZU-G3-kA7"/>
+                        <outlet property="userLabel" destination="Iz3-oB-Dzq" id="kJw-hS-pYj"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7VA-Sg-f6s" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="837.60000000000002" y="1521.5892053973014"/>
+            <point key="canvasLocation" x="838" y="1669"/>
         </scene>
         <!--Home-->
         <scene sceneID="uoa-EG-VMI">

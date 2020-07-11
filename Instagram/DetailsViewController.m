@@ -7,7 +7,8 @@
 //
 
 #import "DetailsViewController.h"
-
+#import "Post.h"
+@import Parse;
 @interface DetailsViewController ()
 
 @end
@@ -17,6 +18,13 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    self.captionLabel.text = _post.caption;
+    self.userLabel.text = _post.author.username;
+    
+    NSNumber *numLikes = self.post.likeCount;
+    self.numLikesLabel.text = [numLikes stringValue];
+    self.imageView.file =self.post.image;
+    [self.imageView loadInBackground];
 }
 
 /*
